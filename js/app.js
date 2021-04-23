@@ -49,6 +49,11 @@ const today = new Date();
 
 dateElement.innerHTML = today.toLocaleString("en-US", options);
 
+// Get the total pending tasks
+  // pendingTasks.textContent = getnumTask;
+	// pendingTasks.textContent = LIST.length;  //passing the array length in pendingtask
+  // const getnumTask = LIST.filter((falseTrash) => falseTrash.trash === false).length;
+
 
 //Add a to-do function
 function addTodo(toDo, id, done, trash){
@@ -74,7 +79,7 @@ function addTodo(toDo, id, done, trash){
 
 //add an item to the list user the enter key
 document.addEventListener("keyup",function(event){
-	if(event.keyCode == 13){
+	if(event.key === "Enter"){
 		const toDo = input.value;
 
 		// if the input isn't empty && //if the user value isn't only spaces
@@ -95,7 +100,14 @@ document.addEventListener("keyup",function(event){
 		}
 		input.value = "";
 		// Get the total pending tasks
-		pendingTasks.textContent = LIST.length;  //passing the array length in pendingtask
+    
+		// pendingTasks.textContent = LIST.length;  //passing the array length in pendingtask
+    // // pendingTasks.textContent = getnumTask;
+    // console.log(getnumTask);
+    let getnumTask = LIST.filter((falseTrash) => falseTrash.trash === false).length;
+    console.log(getnumTask);
+    pendingTasks.textContent = getnumTask;
+
 	}
 });
 
@@ -121,8 +133,10 @@ addBtn.onclick = function(){
 			id++;
 		}
 		input.value = "";
-		// Get the total pending tasks
-		pendingTasks.textContent = LIST.length;  //passing the array length in pendingtask
+    
+    let getnumTask = LIST.filter((falseTrash) => falseTrash.trash === false).length;
+    console.log(getnumTask);
+    pendingTasks.textContent = getnumTask;
 }
 
 //complete to do
@@ -140,6 +154,10 @@ function removeToDo(element){
 	element.parentNode.parentNode.removeChild(element.parentNode);
 	
 	LIST[element.id].trash = true;
+
+  let getnumTask = LIST.filter((falseTrash) => falseTrash.trash === false).length;
+    console.log(getnumTask);
+    pendingTasks.textContent = getnumTask;
 }
 
 //target the items/element created dynamically
@@ -152,13 +170,16 @@ list.addEventListener("click", function(event){
 	}else if(elementJob == "delete"){
 		removeToDo(element);
 	}	
-
 	//add item to localstorage (this code must be added where the LIST array is updated)
 	localStorage.setItem("TODO", JSON.stringify(LIST));
 
 });
-
-
 // Get the total pending tasks
-//const trashFalse = LIST[id].trash == true;
-pendingTasks.textContent = LIST.length;  //passing the array length in pendingtask
+// pendingTasks.textContent = LIST.length;  //passing the array length in pendingtask
+// Get the total pending tasks using filter
+  // const getnumTask = LIST.filter((falseTrash) => falseTrash.trash === false).length;
+  // pendingTasks.textContent = getnumTask;
+// const getnumTask = LIST.filter((falseTrash) => falseTrash.trash === false).length;
+let getnumTask = LIST.filter((falseTrash) => falseTrash.trash === false).length;
+pendingTasks.textContent = getnumTask;
+//  console.log(getnumTask);

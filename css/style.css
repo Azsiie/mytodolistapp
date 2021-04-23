@@ -11,7 +11,7 @@ body{
  	height: 100vh;
 	background: linear-gradient(to bottom, #FF4B00 0%, #9F7708  100%);
 	/*color: #fff;*/
-	line-height: 2em;
+	/* line-height: 2em; */
 	padding: 10px;
 }
 
@@ -28,12 +28,41 @@ body{
 }
 
 .container .header {
-	font-size: 30px;
-	font-weight: 600;
-	display: block;
-	padding-bottom: 10px;
+	/* display: block;
+	padding-bottom: 10px; */
   	text-align: center;
+	
 }
+
+.header h1{
+	overflow: hidden; /* Ensures the content is not revealed until the animation */
+	border-right: .15em solid black; /* The typwriter cursor */
+	white-space: nowrap; /* Keeps the content on a single line */
+  	margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+	letter-spacing: .1em; /* Adjust as needed */
+	animation: 
+    typing 3.5s steps(40,end) normal,
+	/* deltyping 3.5s steps(40,end), */
+	blink-caret .5s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+	from { width: 0 }
+	to { width: 100% }
+  }
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+	from, to { border-color: transparent }
+	50% { border-color: black; }
+  }
+
+/* The typing effect */
+@keyframes deltyping {
+	from { width: 100% }
+	to { width: 0% }
+  }
 
 #date {
 	padding-top: 10px;
@@ -98,7 +127,7 @@ body{
 	width: 100%;
 	height: 45px;
 	min-height: 45px;
-    position: relative;
+	position: relative;
     border-bottom: 1px solid rgba(0,0,0,0.1);
     list-style: none;
     padding: 0;
@@ -139,7 +168,7 @@ body{
     left:35px;
     top:2.5px;
     background-color: #FFF;
-    max-width:285px;
+    max-width:282px;
 }
 
 .lineThrough{
@@ -162,9 +191,15 @@ body{
 }
 
 footer{
+	/* display: flex;
+	justify-content: center; */
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	color: white;
+	padding:10px;
 	text-align: center;
-	/*padding-top: 10px;
-	margin-top: 30px;*/
 }
 
 /*.container .item{
