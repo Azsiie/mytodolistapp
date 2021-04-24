@@ -1,5 +1,5 @@
 # mytodolistapp
-My to do list app is not complete yet
+<!-- My to do list app is not complete yet
 Here's the action item
 
 If trash == 'true', pending task will decreased - done using filter function
@@ -37,3 +37,4 @@ $ git add *.html
 $ git add .
 
 // commit git
+-->
