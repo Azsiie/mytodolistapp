@@ -1,5 +1,12 @@
+import {
+  openModal,
+  closeModal,
+  clickOutside,
+  clearTodo
+} from "./modal.js";
+
 //select elements
-const clear = document.querySelector(".clear button");
+const clearBtn = document.getElementById("clearBtn");
 const dateElement = document.getElementById("date");
 const list = document.getElementById("list");
 const input = document.getElementById("input");
@@ -7,6 +14,26 @@ const input = document.getElementById("input");
 const addBtn = document.querySelector(".add-to-do button");
 
 const pendingTasks = document.getElementById("pendingTasks");
+
+// MODAL VARIABLES
+// Get modal element
+// var modal = document.getElementById('simpleModal');
+// Get open modal button
+// var clearBtn = document.getElementById('clearBtn');
+// Get close button
+  var closeBtn = document.getElementsByClassName('closeBtn')[0];
+
+// Listen for open click
+clearBtn.addEventListener('click', openModal);
+// Listen for close click
+closeBtn.addEventListener('click', closeModal);
+// Listen for Outside click
+window.addEventListener('click', clickOutside);
+
+yesBtn.addEventListener('click', clearTodo);
+noBtn.addEventListener('click', closeModal);
+
+// MODAL END
 
 //classes names
 const CHECK = "checkedBtn";
@@ -27,7 +54,7 @@ if(data){
 }else{
 	//if data isn't empty
 	LIST = [];
-	id = 0;
+	id = 0; //
 }
 
 //load items to the user's interface
@@ -37,23 +64,17 @@ function loadList(array){
 	});
 }
 
-// clear the local storage
-clear.addEventListener("click",function(){
-	localStorage.clear();
-	location.reload();
-});
+// // clear the local storage
+// clearBtn.addEventListener("click",function(){
+// 	localStorage.clear();
+// 	location.reload();
+// });
 
 //show todays date
 const options = {weekday : "long", month : "short", day : "numeric"};
 const today = new Date();
 
 dateElement.innerHTML = today.toLocaleString("en-US", options);
-
-// Get the total pending tasks
-  // pendingTasks.textContent = getnumTask;
-	// pendingTasks.textContent = LIST.length;  //passing the array length in pendingtask
-  // const getnumTask = LIST.filter((falseTrash) => falseTrash.trash === false).length;
-
 
 //Add a to-do function
 function addTodo(toDo, id, done, trash){
@@ -105,9 +126,8 @@ document.addEventListener("keyup",function(event){
     // // pendingTasks.textContent = getnumTask;
     // console.log(getnumTask);
     let getnumTask = LIST.filter((falseTrash) => falseTrash.trash === false).length;
-    console.log(getnumTask);
+    // console.log(getnumTask);
     pendingTasks.textContent = getnumTask;
-
 	}
 });
 
@@ -156,7 +176,7 @@ function removeToDo(element){
 	LIST[element.id].trash = true;
 
   let getnumTask = LIST.filter((falseTrash) => falseTrash.trash === false).length;
-    console.log(getnumTask);
+    // console.log(getnumTask);
     pendingTasks.textContent = getnumTask;
 }
 
